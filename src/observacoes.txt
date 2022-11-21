@@ -1,0 +1,1 @@
+Em caso de bugs olhar o arquivo products.services.js  <----
