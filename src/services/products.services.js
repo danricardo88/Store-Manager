@@ -8,7 +8,7 @@ const getAll = async () => {
 const getProductsID = async (id) => {
   const products = await productsModel.getProductsID(id);
   if (products) return { type: null, message: products };
-  return { type: 'PRODUCT_NOT_FOUND', message: 'Product not afound' };
+  return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
 };
 
 module.exports = {
