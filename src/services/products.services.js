@@ -13,7 +13,6 @@ const getProductsID = async (id) => {
 
 const insertProduct = async (prod) => {
   const create = await productsModel.insertProduct(prod);
-  console.log(create);
   const criou = await productsModel.getProductsID(create);
   return { type: null, message: criou };
 };
