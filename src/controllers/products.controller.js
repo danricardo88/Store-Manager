@@ -3,6 +3,7 @@ const { productsServices } = require('../services');
 const OK = 200;
 const SUCCESS = 201;
 const ERRO = 404;
+const OUTROERRO = 422;
 
 const getAll = async (_request, response) => {
   const { message } = await productsServices.getAll();
@@ -19,8 +20,10 @@ const getProductsID = async (request, response) => {
 const insertProduct = async (request, response) => {
   const { name } = request.body;
   const { type, message } = await productsServices.insertProduct(name);
-  if (!type) return response.status(SUCCESS).json(message);
-  return response.status(ERRO).json(message);
+   if (type) return response.status(SUCCESS).json(message);
+  return response.status(OUTROERRO).json({ message });
+  // if (!type) return response.status(SUCCESS).json(message);
+  // return response.status(ERRO).json(message);
 };
 
 module.exports = {
