@@ -37,6 +37,7 @@ const salesID = async (id) => {
   const modelSalesID = await salesMod.salesID(id);
   return modelSalesID;
 };
+//
 
 module.exports = {
   insertSale,
