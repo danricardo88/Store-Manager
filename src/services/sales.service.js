@@ -14,7 +14,6 @@ const insertSale = async (products) => {
   }
 
   const id = await salesMod.insertSales();
-
   await Promise.all(
     products.map(async (product) =>
       salesMod.insertProductsInSale(id, product)),

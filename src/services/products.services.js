@@ -19,8 +19,24 @@ const insertProduct = async (prod) => {
   return criou;
 };
 
+const upProducts = async (name, id) => {
+  const productValidate = await nameValidation(name);
+  const productUp = await productsModel.upProducts(name, id);
+  if (productValidate) return productValidate;
+  if (productUp <= 0) return { type: 422, message: 'Product not found' };
+  return { type: null, message: { name, id } };
+};
+
+const delet = async (id) => {
+  const deleta = await productsModel.delet(id);
+  if (deleta <= 0) return { type: 422, message: 'Product not found' };
+  return { type: null };
+};
+
 module.exports = {
   getAll,
   getProductsID,
   insertProduct,
+  upProducts,
+  delet,
 };

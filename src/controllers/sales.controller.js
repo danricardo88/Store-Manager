@@ -26,15 +26,12 @@ const insertSale = async (request, response) => {
 
 const allSales = async (_request, response) => {
   const result = await salesServ.allSales();
-  console.log('allSales', result);
   return response.status(OK).json(result);
 };
 
 const salesID = async (request, response) => {
   const { id } = request.params;
   const sales = await salesServ.salesID(Number(id));
-
-  console.log('salesId');
   if (sales.length) return response.status(OK).json(sales);
   return response.status(ERRO).json({ message: 'Sale not found' });
 };

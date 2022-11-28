@@ -121,11 +121,11 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/sales/999",
-    "url": "http://localhost:3000/sales/999",
+    "url": "http://localhost:3000/products/999",
     "method": "GET",
     "sortNum": 0,
     "created": "2022-11-23T22:39:05.928Z",
-    "modified": "2022-11-23T22:39:05.928Z",
+    "modified": "2022-11-28T02:06:34.887Z",
     "headers": [],
     "params": [],
     "tests": []

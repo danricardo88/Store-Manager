@@ -31,15 +31,26 @@ const salesID = async (id) => {
   INNER JOIN sales_products sp
   ON s.id = sp.sale_id
   WHERE s.id = ?`,
-  // `SELECT s.date AS date, sp.product_id AS productId, sp.quantity AS quantity
-  // FROM StoreManager.sales AS s
-  // JOIN StoreManager.sales_products AS sp
-  // ON s.id = sp.sale_id
-  // WHERE s.id = ?
-  // ORDER BY sale_id ASC, product_id ASC;`,
   [id],
   );
   return camelize(results);
+};
+
+const upProducts = async (id, data) => {
+  const { productId, quantity } = data;
+  const [{ affectedRows }] = await connection.execute(
+    'UPDATE sales_products SET quantity = ? WHERE sale_id = ? AND product_id = ?',
+    [quantity, id, productId],
+  );
+  return affectedRows;
+};
+
+const delet = async (id) => {
+  const [{ affectedRows }] = await connection.execute(
+    'DELETE FROM sales WHERE id = ?',
+    [id],
+  );
+  return affectedRows;
 };
 
 module.exports = {
@@ -47,4 +58,6 @@ module.exports = {
   insertSaleProd,
   allSales,
   salesID,
+  upProducts,
+  delet,
 };
