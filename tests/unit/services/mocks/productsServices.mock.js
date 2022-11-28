@@ -22,8 +22,14 @@ const productInsert = {
   "name": "Quero FÉRIAS"
 }
 
+const test = {
+  "id": 1,
+  "name": "test de UP"
+}
+
 module.exports = {
   productsList,
   idProducts,
   productInsert,
+  test,
 }

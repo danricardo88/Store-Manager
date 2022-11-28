@@ -16,14 +16,17 @@ const insertProduct = async (prod) => {
   if (validateProd) return validateProd;
   const create = await productsModel.insertProduct(prod);
   const criou = await productsModel.getProductsID(create);
-  return criou;
+  return { type: null, message: criou };
 };
 
 const upProducts = async (name, id) => {
   const productValidate = await nameValidation(name);
-  const productUp = await productsModel.upProducts(name, id);
+  console.log(productValidate);
   if (productValidate) return productValidate;
-  if (productUp <= 0) return { type: 422, message: 'Product not found' };
+  console.log(productValidate);
+  const productUp = await productsModel.upProducts(name, id);
+  if (productUp === 0) return { type: 422, message: 'Product not found' };
+  console.log(productUp);
   return { type: null, message: { name, id } };
 };
 
