@@ -12,7 +12,7 @@ const insertSale = async (request, response) => {
   const resultado = data.every((status) => status === 'validated');
 
   if (resultado) {
-    const { type, message } = await salesServ.insert(object);
+    const { type, message } = await salesServ.insertSale(object);
     if (type) return response.status(type).json({ message });
     return response.status(SUCCESS).json(message);
   }
@@ -32,8 +32,8 @@ const allSales = async (_request, response) => {
 const salesID = async (request, response) => {
   const { id } = request.params;
   const sales = await salesServ.salesID(Number(id));
-  if (sales.length) return response.status(OK).json(sales);
-  return response.status(ERRO).json({ message: 'Sale not found' });
+  if (!sales.length) return response.status(ERRO).json({ message: 'Sale not found' });
+  return response.status(OK).json(sales);
 };
 
 module.exports = {

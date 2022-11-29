@@ -1,11 +1,12 @@
-const handleValidateSales = async (sale) => {
+const handleValidateSales = async (sales) => {
   const results = await Promise.all(
-    sale.map((productId, quantity) => {
-      if (!productId) { return ' invalid productId '; }
+    sales.map(({ productId, quantity }) => {
+      if (!productId) { return 'invalid productId'; }
       if (quantity === undefined) { return 'invalid quantity'; }
-      return results;
+      return 'Validated';
     }),
   );
+  return results;
 };
 
 module.exports = {

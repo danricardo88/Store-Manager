@@ -11,5 +11,5 @@ app.get('/', (_request, response) => {
 });
 
 app.use('/products', productsRouter);
-app.use('/sales', salesRouter);
+app.use('/sales', salesRouter); // <-----  O PROBLEMA TA AQUI, PURA FALTA DE ATENÇÃO
 module.exports = app;

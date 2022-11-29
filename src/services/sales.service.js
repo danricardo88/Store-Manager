@@ -8,15 +8,15 @@ const insertSale = async (products) => {
   const { type, message } = handleQuantidade(products);
   if (type) return { type: ENTENDEU, message };
 
-  const verifiedProducts = await handleProductts(products);
-  if (verifiedProducts.includes(undefined)) {
+  const productsValidate = await handleProductts(products);
+  if (productsValidate.includes(undefined)) {
     return { type: ERRO, message: 'Product not found' };
   }
 
-  const id = await salesMod.insertSales();
+  const id = await salesMod.insertSale();
   await Promise.all(
     products.map(async (product) =>
-      salesMod.insertProductsInSale(id, product)),
+      salesMod.insertSaleProd(id, product)),
   );
 
   const result = {

@@ -13,7 +13,7 @@ const getProductsID = async (id) => {
     'SELECT * FROM StoreManager.products WHERE id = ?',
     [id],
   );
-  return camelize(result);
+  return result;
 };
 
 const insertProduct = async (prod) => {
