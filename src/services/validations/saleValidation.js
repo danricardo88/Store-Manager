@@ -4,7 +4,7 @@ const ENTENDEU = 422;
 const NUMERO_MAGICO = 0;
 
 const handleQuantidade = (products) => {
-  const result = products.map(({ quantidade }) => quantidade);
+  const result = products.map(({ quantity }) => quantity);
   if (result.some((index) => index <= NUMERO_MAGICO)) {
     return {
       type: ENTENDEU,
