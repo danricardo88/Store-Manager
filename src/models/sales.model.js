@@ -8,11 +8,11 @@ const insertSale = async () => {
   return insertId;
 };
 
-const insertSaleProd = async ({ saleId, productId, quantity }) => {
+const insertSaleProd = async (idSale, { productId, quantity }) => {
   await connection.execute(
     `INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity)
       VALUES (?, ?, ?)`,
-    [saleId, productId, quantity],
+    [idSale, productId, quantity],
   );
 };
 

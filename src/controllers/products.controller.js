@@ -14,6 +14,7 @@ const getAll = async (_request, response) => {
 const getProductsID = async (request, response) => {
   const { id } = request.params;
   const feedback = await productsServices.getProductsID(id);
+  console.log('feedback', feedback);
   if (!feedback) return response.status(ERRO).json({ message: 'Product not found' });
   return response.status(OK).json(feedback);
 };

@@ -36,11 +36,9 @@ const insertProduct = async (prod) => {
 
 const upProducts = async (name, id) => {
   const productValidate = await nameValidation(name);
-  console.log(productValidate);
   if (productValidate) return productValidate;
   const productUp = await productsModel.upProducts(name, id);
   if (productUp === 0) return { type: 422, message: 'Product not found' };
-  // console.log(productUp);
   return { type: null, message: { name, id } };
 };
 
